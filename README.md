@@ -9,3 +9,5 @@ npm install
 npm install --save-dev webpack-cli
 
 npm run dev
+
+php artisan ui vue --auth
