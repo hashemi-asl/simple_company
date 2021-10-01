@@ -1,0 +1,140 @@
+section.menu{
+    width: 100%;
+    height: 50px;
+    background-color: lightgray;
+}
+section.menu>nav{
+    width: inherit;
+    height: inherit;
+}
+section.menu>nav>ul{
+    width: 50%;
+    height: inherit;
+    margin: 0 auto;
+    list-style: none;
+}
+section.menu>nav>ul>li{
+    width: 150px;
+    height: inherit;
+    display: inline-block;
+}
+section.menu>nav>ul>li>a{
+    display: block;
+    width: inherit;
+    height: inherit;
+    text-align: center;
+    line-height:50px ;
+    text-decoration: none;
+    color: #111111;
+    font-size: 12px;
+    transition: all 300ms linear;
+}
+section.menu>nav>ul>li>a:hover{
+    background-color: deeppink;
+    color:whitesmoke;
+}
+section.menu>nav>ul>li>a>i{
+    margin-left: 5px;
+    color:darkslategray;
+}
+
+@media(min-width: 992px) and (max-width:1250px ) {
+	section.menu>nav>ul>li{
+    width: 100px;
+    height: inherit;
+    display: inline-block;
+}
+}
+
+
+@media(min-width: 830px) and (max-width:992px ) {
+	section.menu>nav>ul>li{
+    width: 100px;
+    height: inherit;
+    display: inline-block;
+}}
+
+@media(min-width: 768px) and (max-width:830px ) {
+section.menu>nav>ul>li{
+    width: 75px;
+    height: inherit;
+    display: inline-block;
+}
+}
+
+@media(min-width: 600px) and (max-width:768px ) {
+	section.menu>nav>ul>li{
+    width: 75px;
+    height: inherit;
+    display: inline-block;
+}
+	nav>ul{
+		display: flex;
+		width: 100%
+		background-color:red;
+	}
+}
+
+@media(min-width: 500px) and (max-width:600px ) {
+	section.menu>nav>ul>li{
+    width: 75px;
+    height: inherit;
+    display: inline-block;
+}
+	nav>ul{
+		display: flex;
+		width: 100%
+		background-color:red;
+	}	
+}
+
+
+
+@media(min-width: 450px) and (max-width:500px ) {
+	section.menu>nav>ul>li{
+    width: 75px;
+    height: inherit;
+    display: inline-block;
+}
+	nav>ul{
+		display: flex;
+		width: 100%
+		margin-left:20px;
+	}
+}
+
+
+@media(min-width: 300px) and (max-width:450px ) {
+	section.menu>nav>ul{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: inherit;
+    margin-left: 20px;
+}
+
+section.menu>nav>ul>li{
+    width: 75px;
+    height: inherit;
+    display: inline-block;
+}
+}
+@media(min-width: 200px) and (max-width:300px ) {
+    section.menu>nav>ul{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: inherit;
+    margin-left: 20px;
+}
+
+section.menu>nav>ul>li{
+    width: 65px;
+    height: inherit;
+    display: inline-block;
+}
+
+section.menu>nav>ul>li>a{
+    font-size: 10px
+}
+}

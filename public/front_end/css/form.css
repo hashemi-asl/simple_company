@@ -1,0 +1,118 @@
+section.contact{
+    width: 100%;
+    padding: 50px;
+    box-sizing: border-box;
+    background-color: #111111;
+}
+section.contact>form{
+    width: 80%;
+    margin: 0 auto;
+    padding: 10px;
+    box-sizing: border-box;
+}
+section.contact>form>label{
+    display: block;
+    color: whitesmoke;
+    font-size: 12px;
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+section.contact>form>input[type=text],section.contact>form>input[type=email]{
+    display: block;
+    width: 100%;
+    height: 40px;
+    padding-right: 10px;
+    box-sizing: border-box;
+    font-family: IRANSANS;
+    margin-bottom: 20px;
+    background-color: transparent;
+    /*border: none;*/
+    /*border-bottom: 1px inset lightgray;*/
+    outline: none;
+    transition: all 300ms linear;
+}
+section.contact>form>input[type=text]:focus,section.contact>form>input[type=email]:focus{
+    width: 50%;
+    background-color: rgba(0,0,0,0.8);
+}
+section.contact>form>textarea{
+    width: 100%;
+    height: 150px;
+    background-color: transparent;
+    padding: 10px;
+    box-sizing: border-box;
+    font-family: IRANSANS;
+    resize: none;
+    margin-bottom: 20px;
+    transition: all 300ms linear;
+}
+section.contact>form>textarea:focus{
+    background-color: black;
+}
+section.contact>form>input[type=submit]{
+    width: 250px;
+    height: 40px;
+    background-color: limegreen;
+    font-family: IRANSANS;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+
+
+
+/*queries*/
+@media(min-width:450px) and (max-width:750px ){
+    section.contact>form>input[type=text]:focus,section.contact>form>input[type=email]:focus{
+    width: 100%;
+    background-color: rgba(0,0,0,0.8);
+}
+}
+
+
+@media(min-width:350px) and (max-width:450px ){
+    section.contact>form{
+    width: 100%;
+    margin: 0 auto;
+    padding: 10px;
+    box-sizing: border-box;
+}
+    section.contact>form>input[type=text]:focus,section.contact>form>input[type=email]:focus{
+    width: 100%;
+    background-color: rgba(0,0,0,0.8);
+}
+section.contact>form>input[type=submit]{
+    width: 100%;
+    height: 40px;
+    margin: auto;
+    color: white;
+    background-color: limegreen;
+    font-family: IRANSANS;
+    font-weight: bold;
+    font-size: 12px;
+}
+section.contact>form>input[type=text],section.contact>form>input[type=email]{
+    font-size: 9px;
+    color: white;
+}
+}
+
+@media(min-width:200px) and (max-width:350px ){
+    section.contact>form{
+    width: 100%;
+    margin: 0 auto;
+    padding: 10px;
+    box-sizing: border-box;
+}
+    section.contact>form>input[type=text]:focus,section.contact>form>input[type=email]:focus{
+    width: 100%;
+    background-color: rgba(0,0,0,0.8);
+}
+    section.contact>form>input[type=submit]{
+        width: 100%
+    }
+    section.contact>form>input[type=text],section.contact>form>input[type=email]{
+    color: white;
+    font-size: 7px;
+}
+}
