@@ -10,19 +10,8 @@
     {{--   end website title--}}
 
     {{--    SEO--}}
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <meta name="robots" content="index,follow">
+    @yield('seo')
     {{--    end SEO--}}
-
-    {{--    meta tag social--}}
-    <meta property="og:title" content="">
-    <meta property="og:description" content="">
-    <meta property="og:keywords " content="">
-    <meta property="og:image" content="">
-    <meta property="og:url" content="">
-    {{--    end meta tag social--}}
 
     {{--    icon --}}
     <link rel="icon" href="{{asset('front_end/images/favicon/favicon.ico')}}" type="image/png"/>
