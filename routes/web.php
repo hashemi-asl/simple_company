@@ -22,3 +22,16 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //website route
 Route::get('/',[\App\Http\Controllers\IndexController::class,"index"]);
 //end website route
+
+/* back-end route */
+Route::middleware('auth')
+    ->prefix('administrator/panel')
+    ->group(
+        function (){
+            Route::get('/admin',[\App\Http\Controllers\Administrator\AdminController::class,'index'])->name('admin');
+            Route::post('/test',function (){
+               \Illuminate\Support\Facades\Auth::logout();
+            });
+        }
+    );
+/* end back-end route */
