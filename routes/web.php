@@ -14,24 +14,26 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-
 Auth::routes(['register' => false]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //website route
-Route::get('/',[\App\Http\Controllers\IndexController::class,"index"]);
+Route::get('/', [\App\Http\Controllers\IndexController::class, "index"])->name('/');
 //end website route
 
 /* back-end route */
 Route::middleware('auth')
     ->prefix('administrator/panel')
     ->group(
-        function (){
-            Route::get('/admin',[\App\Http\Controllers\Administrator\AdminController::class,'index'])->name('admin');
-            Route::post('/test',function (){
-               \Illuminate\Support\Facades\Auth::logout();
+        function () {
+            Route::get('/admin', [\App\Http\Controllers\Administrator\AdminController::class, 'index'])->name('admin');
+
+            Route::post('/test', function () {
+                \Illuminate\Support\Facades\Auth::logout();
             });
+
+            Route::resource('/seo', \App\Http\Controllers\Administrator\SeoController::class)->parameters(['seo' => 'id']);
         }
     );
 /* end back-end route */
