@@ -3,9 +3,14 @@
 @section('content')
     <div class="data">
         <div class="col-8 offset-2 mt-2">
+            @if (session('create'))
+                <section class="alert alert-success" role="alert">
+                    <h4 class="text-success text-center">{{session('create    ')}}</h4>
+                </section>
+            @endif
             @if (session('delete'))
-                <div class="alert alert-success" role="alert">
-                    <h4 class="text-success text-center">{{session('delete')}}</h4>
+                <div class="alert alert-danger" role="alert">
+                    <h4 class="text-danger text-center">{{session('delete')}}</h4>
                 </div>
             @endif
         </div>
@@ -43,6 +48,7 @@
                         </tbody>
                     @endforelse
                 </table>
+                <a href="{{route('seo.create')}} " class="btn btn-outline-success font-weight-bolder btn-block mt-4"> create SEO </a>
             </div>
         </div>
     </div>

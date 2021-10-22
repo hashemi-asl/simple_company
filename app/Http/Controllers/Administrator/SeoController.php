@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Administrator;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\createSeoRequest;
 use App\Models\Seo;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,7 @@ class SeoController extends Controller
      */
     public function index()
     {
-        $seo=Seo::all();
+        $seo=Seo::paginate(5);
         return view('admin.seo.index',compact('seo'));
     }
 
@@ -26,7 +27,7 @@ class SeoController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.seo.create');
     }
 
     /**
@@ -35,9 +36,16 @@ class SeoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(createSeoRequest $request)
     {
-        //
+        Seo::create([
+            "title"=>$request->title,
+            "keywords"=>$request->keywords,
+            "description"=>$request->description,
+            "author"=>$request->author,
+        ]);
+        session()->flash('create','Data creation in SEO was successful');
+        return  redirect()->route('seo.index');
     }
 
     /**

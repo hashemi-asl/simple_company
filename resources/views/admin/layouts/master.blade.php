@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     @yield('css')
     {{--    end css--}}
+    <link rel="icon" href="{{asset('front_end/images/favicon/favicon.ico')}}" type="image/png"/>
+
 </head>
 <body>
 
