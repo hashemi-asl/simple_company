@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Seo extends Model
 {
     use HasFactory;
-//    protected $fillable=[
-//        'title',
-//        'keywords',
-//        'description',
-//        'author',
-//        ];
-    protected $guarded=['id'];
+    protected $fillable=[
+        'title',
+        'keywords',
+        'description',
+        'author',
+        ];
+//    protected $guarded=['id'];
     }

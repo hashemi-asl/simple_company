@@ -34,6 +34,8 @@ Route::middleware('auth')
             });
 
             Route::resource('/seo', \App\Http\Controllers\Administrator\SeoController::class)->parameters(['seo' => 'id']);
+
+            Route::resource('/parallax',\App\Http\Controllers\Administrator\ParallaxController::class)->parameters(['parallax'=>'id']);
         }
     );
 /* end back-end route */

@@ -6,7 +6,7 @@
                 @if (session())
 
                 @endif
-                {!! Form::open(['route'=>'seo.store' , 'method'=>'post']) !!}
+                {!! Form::open(['route'=>'seo.store'] , ['method'=>'post']) !!}
                     <div class="form-group">
                         {!! Form::label('title', 'title :', ['class'=>'text-capitalize']) !!}
                         {!! Form::text('title' , old('title') ,['class'=>'form-control' , 'placeholder'=>'please enter the title of the SEO'])  !!}
@@ -36,7 +36,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        {!! Form::submit('submit' ,['class'=>'btn btn-success btn-block mt-4']) !!}
+                        {!! Form::submit('register' ,['class'=>'btn btn-success btn-block mt-4']) !!}
                     </div>
                 {!! Form::close() !!}
                 <div class="form-group">

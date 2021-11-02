@@ -5,7 +5,7 @@
         <div class="col-8 offset-2 mt-2">
             @if (session('create'))
                 <section class="alert alert-success" role="alert">
-                    <h4 class="text-success text-center">{{session('create    ')}}</h4>
+                    <h4 class="text-success text-center">{{session('create')}}</h4>
                 </section>
             @endif
             @if (session('delete'))
