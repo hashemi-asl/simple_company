@@ -1,7 +1,11 @@
+<title>type is: {{gettype($seo)}}</title>
+
 @if (is_array($seo))
     @forelse ($seo as $item)
+        <title>{{$item}}</title>
+
         <title>{{$item->title}}</title>
-{{--        <meta name="title" content="{{$item->title}}">--}}
+        <meta name="title" content="{{$item->title}}">
         <meta name="keywords" content="{{$item->keywords}}">
         <meta name="description" content="{{$item->description}}">
         <meta name="author" content="{{$item->author}}">
@@ -27,7 +31,6 @@
         <meta property="og:image" content="">
         <meta property="og:url" content="">
 {{--            end meta tag social--}}
-
     @endforelse
 @else
   @if (!empty($seo))

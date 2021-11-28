@@ -1,6 +1,8 @@
 @extends('front_end.layouts.master')
 @section('seo')
+    @include('front_end.partials.seo',['seo'=>$seo[0]])
     @include('front_end.partials.seo',['seo'=>$seo])
+
 @endsection
 @section('content')
 <main class="wrapper">
@@ -8,8 +10,10 @@
     @include('front_end.partials.menu')
     <!--end make menu-->
 
+
     <!-- make parallax-->
-    @include('front_end.partials.parallax')
+{{--    @include('front_end.partials.parallax',['data'=>$parallax[0]])--}}
+    @include('front_end.partials.parallax',['data'=>$parallax])
     <!-- end make parallax-->
 
     <!--  make news-->

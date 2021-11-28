@@ -3,46 +3,69 @@
 namespace App\Http\Controllers\Administrator;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\createParallaxReauest;
-use App\Http\Requests\createparallaxRequest;
+use App\Http\Requests\createParallaxRequest;
+use App\Http\Requests\updateParallaxRequest;
 use App\Models\Parallax;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use function GuzzleHttp\Promise\all;
 
 class ParallaxController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $parallax=Parallax::paginate(5);
-        return view('admin.parallax.index',compact('parallax'));
+        $parallax = Parallax::paginate(5);
+        return view('admin.parallax.index', compact('parallax'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function create()
     {
         return view('admin.parallax.create');
+        session()->flash('create', 'Data creation in Parallax was successful');
+        return redirect()->route('parallax.index');
     }
 
-    
-    public function store(createParallaxReauest $request)
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(createParallaxRequest $request)
     {
-        dd($request->all());
+        $file = $request->file('image');
+        $image = "";
+        if (!empty($file)) {
+            $image = time() . $file->getClientOriginalName();
+            $file->move('images/parallax', $image);
+        }
+        Parallax::create([
+            'title' => $request->title,
+            'title_size' => $request->title_size,
+            'title_color' => $request->title_color,
+            'body' => $request->body,
+            'body_size' => $request->body_size,
+            'body_color' => $request->body_color,
+            'image' => $image,
+        ]);
+        session()->flash('create', 'Data creation in SEO was successful');
+        return redirect()->route('parallax.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return Response
+     * @param int $id
+     * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
@@ -52,36 +75,64 @@ class ParallaxController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return Response
+     * @param int $id
+     * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
+        $parallax = Parallax::findOrFail($id);
+        return view('admin.parallax.edit', compact('parallax'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
-     * @param  int  $id
-     * @return Response
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
+     * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(updateParallaxRequest $request, $id)
     {
-        //
+        $file = $request->file('image');
+        $deleteImage = Parallax::findOrFail($id);
+        $image = '';
+        if (!empty($file)) {
+            if (file_exists('images/parallax/' . $deleteImage->image)) {
+                unlink('images/parallax/' . $deleteImage->image);
+            }
+            $image = time() . $file->getClientOriginalName();
+            $file->move('images/parallax', $image);
+        } else {
+            $image = $deleteImage->image;
+        }
+        Parallax::findOrFail($id)->update([
+            'title' => $request->title,
+            'title_size' => $request->title_size,
+            'title_color' => $request->title_color,
+            'body' => $request->body,
+            'body_size' => $request->body_size,
+            'body_color' => $request->body_color,
+            'image' => $image,
+        ]);
+        session()->flash('update','Data update completed successfully');
+        return redirect()->route('parallax.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @param int $id
+     * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
+        $deleteImage = Parallax::findOrFail($id);
+        if (file_exists('images/parallax/' . $deleteImage->image)) {
+            unlink("images/parallax/" . $deleteImage->image);
+        }
         Parallax::destroy($id);
-        session()->flash('delete','The data removal operation was successful');
+        session()->flash('delete', 'Data successfully deleted');
         return redirect()->route('parallax.index');
+
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Administrator;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\createSeoRequest;
 use App\Models\Seo;
+use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\Request;
 
 class SeoController extends Controller
@@ -12,7 +13,7 @@ class SeoController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index()
     {
@@ -23,7 +24,7 @@ class SeoController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function create()
     {
@@ -34,7 +35,8 @@ class SeoController extends Controller
      * Store a newly created resource in storage.
      *
      * @parasm createSeoRequest $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @param createSeoRequest $request
+     * @return void
      */
     public function store(createSeoRequest $request)
     {
@@ -44,8 +46,9 @@ class SeoController extends Controller
             "description"=>$request->description,
             "author"=>$request->author,
         ]);
-        session()->flash('create','Data creation in SEO was successful');
-        return  redirect()->route('seo.index');
+//        session()->flash('create','Data creation in SEO was successful');
+//        return  redirect()->route('seo.index');
+        dd($request->all());
     }
 
     /**

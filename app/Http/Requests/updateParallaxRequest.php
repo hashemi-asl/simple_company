@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class createParallaxReauest extends FormRequest
+class updateParallaxRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,13 +24,13 @@ class createParallaxReauest extends FormRequest
     public function rules()
     {
         return [
-            "title"=>'required',
+            "title"=>'required|max:100',
             "title_size"=>'required',
             "title_color"=>'required',
-            "body"=>'required',
+            "body"=>'required|max:1000',
             "body_size"=>'required',
             "body_color"=>'required',
-            'image'=>'required|mimes:jpg,png'
+            'image'=>'mimes:jpg,png|image'
         ];
     }
 }

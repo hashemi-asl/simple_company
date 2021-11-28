@@ -2,7 +2,8 @@
 @section('title', 'SEO information page')
 @section('content')
     <div class="data">
-        <div class="col-8 offset-2 mt-2">
+        <div class="row m-0">
+            <div class="col-8 offset-2 mt-4">
             @if (session('create'))
                 <section class="alert alert-success" role="alert">
                     <h4 class="text-success text-center">{{session('create')}}</h4>
@@ -13,9 +14,9 @@
                     <h4 class="text-danger text-center">{{session('delete')}}</h4>
                 </div>
             @endif
-        </div>
-        <div class="row m-0">
-            <div class="col-8 offset-2 mt-4">
+
+{{--        <div class="row m-0">--}}
+{{--            <div class="col-8 offset-2 mt-4">--}}
                 <table class="table table-hover table-dark">
                     <thead>
                     <tr>

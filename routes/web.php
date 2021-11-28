@@ -23,8 +23,8 @@ Route::get('/', [\App\Http\Controllers\IndexController::class, "index"])->name('
 //end website route
 
 /* back-end route */
-Route::middleware('auth')
-    ->prefix('administrator/panel')
+//Route::middleware('auth')
+Route::prefix('administrator/panel')
     ->group(
         function () {
             Route::get('/admin', [\App\Http\Controllers\Administrator\AdminController::class, 'index'])->name('admin');

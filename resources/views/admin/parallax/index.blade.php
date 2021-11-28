@@ -2,18 +2,23 @@
 @section('title','index-parallax')
 @section('content')
     <div class="data">
-                <div class="col-10 offset-1 mt-2">
-                    @if (session('create'))
-                        <section class="alert alert-success" role="alert">
-                            <h4 class="text-success text-center">{{session('create')}}</h4>
-                        </section>
-                    @endif
-                    @if (session('delete'))
-                        <div class="alert alert-danger" role="alert">
-                            <h4 class="text-danger text-center">{{session('delete')}}</h4>
-                        </div>
-                    @endif
+        <div class="col-10 offset-1 mt-2">
+            @if (session('create'))
+                <section class="alert alert-success" role="alert">
+                    <h4 class="text-success text-center">{{session('create')}}</h4>
+                </section>
+            @endif
+            @if (session('delete'))
+                <div class="alert alert-danger" role="alert">
+                    <h4 class="text-danger text-center">{{session('delete')}}</h4>
                 </div>
+            @endif
+            @if (session('update'))
+                <div class="alert alert-success" role="alert">
+                    <h4 class="text-success text-center">{{session('update')}}</h4>
+                </div>
+            @endif
+        </div>
         <div class="row m-0">
             <div class="col-10 offset-1 mt-4">
                 <table class="table table-hover table-dark">
@@ -34,15 +39,16 @@
                     @forelse ($parallax as $item)
                         <tbody>
                         <tr>
-                            <td>{{$item->title}}</td>
+                            <td>{{\Illuminate\Support\Str::limit($item->title,20)}}</td>
                             <td>{{$item->title_size}}</td>
                             <td>{{$item->title_color}}</td>
                             <td>{{\Illuminate\Support\Str::limit($item->body,50)}}</td>
                             <td>{{$item->body_size}}</td>
                             <td>{{$item->body_color}}</td>
-                            <td><img src="{{$item->image}}" alt="" width="50px" height="50px"></td>
+                            <td><img src="{{asset('images/parallax/'.$item->image)}}" alt="" width="65px" height="65px"
+                                     class="img-fluid"></td>
                             <td>
-                                {!! Form::open(['route'=>['parallax.update','id'=>$item->id],'method'=>'put']) !!}
+                                {!! Form::open(['route'=>['parallax.edit','id'=>$item->id],'method'=>'get']) !!}
                                 {!! Form::submit('update',['class'=>'btn btn-outline-warning']) !!}
                                 {!! Form::close() !!}
                             </td>
@@ -61,7 +67,7 @@
                         </tbody>
                     @endforelse
                 </table>
-                <a href="{{route('parallax.create')}} "
+                <a href="{{route('parallax.create')}}"
                    class="btn btn-outline-success font-weight-bolder btn-block mt-4">
                     create new parallax </a>
             </div>

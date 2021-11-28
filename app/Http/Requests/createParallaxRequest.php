@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class createSeoRequest extends FormRequest
+class createParallaxRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,13 @@ class createSeoRequest extends FormRequest
     public function rules()
     {
         return [
-            "title"=>"required","min:5","max:250",
-            "keywords"=>"required|min:5|max:500",
-            "description"=>"required|min:5|max:550",
-            "author"=>"required|min:3|max:200"
+            "title"=>'required|max:100',
+            "title_size"=>'required',
+            "title_color"=>'required',
+            "body"=>'required|max:1000',
+            "body_size"=>'required',
+            "body_color"=>'required',
+            'image'=>'required|mimes:jpg,png|image'
         ];
     }
 }
